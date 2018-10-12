@@ -1,0 +1,115 @@
+Ganesha
+
+
+
+########################################################################
+		Linux Partitioning Steps by FDisk
+########################################################################
+
+1: Delete All existing partition first
+
+	fdisk -l
+	fdisk /dev/sda
+	d (to delete partition)
+	1 (select partition number)
+	p (select primary partition)
+
+	Folllow Above steps till all partition get deleted
+
+	w (to save the changes)
+	fdisk -l (verify the partition)
+
+
+
+
+
+2: Create All partition now
+
+	fdisk /dev/sda
+
+	To Create Boot Partition
+
+	p (print exixting partion)
+	n (to create a partition)
+	p (select primary partition)
+	1 (select primary partition number)
+	Press Enter (Select First Cylender Number)
+	+200M (define size of Partition)
+	p(print exixting partion)
+
+
+
+
+	To Create Swap Partition
+
+	n (to create a partition)
+	p (select primary partition)
+	2 (select primary partition number)
+	Press Enter (Select First Cylender Number)
+	+16000M (define size of Partition)
+	p(print exixting partion)
+
+
+
+	To Create Extended Partition
+
+	n (to create a partition)
+	e (select extended partition)
+	3 (select primary partition number)
+	Press Enter (Select First Cylender Number)
+	Press Enter (define all remaining HDD size to Partition)
+	p(print exixting partion)
+
+
+
+
+	To Create LVM Partition
+
+	n (to create a partition)
+	l (select logical partition)
+	Press Enter (Select First Cylender Number)
+	Press Enter (define all remaining HDD size to Partition)
+	p(print exixting partion)
+
+
+
+	To Set Toggle Flag  On Boot Partition
+
+	a (to set toggle flag)
+	1 (to select boot partition)
+	p(print exixting partion)
+
+
+
+	To Set File Format for Swap Partition
+
+	t (to set file format to swap partition)
+	2 (To select swap parition by number)
+	82 (select swap partition format)
+	p(print exixting partion)
+
+
+
+
+	To Set File Format for LVM Partition
+
+	t (to set file format to LVM partition)
+	5 (To select LVM parition by number)
+	8e (select LVM partition format)
+	p(print exixting partion)
+
+
+
+	To Save Partition Configuration & Sync Partition Table
+	w (to save the changes)
+	fdisk -l (verify the partition)
+	sync (to sync partition table)
+	sync (to sync partition table)
+	sync (to sync partition table)
+	sync (to sync partition table)
+	sync (to sync partition table)
+	sync (to sync partition table)
+
+
+########################################################################
+########################################################################
