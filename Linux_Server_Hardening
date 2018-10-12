@@ -1,0 +1,69 @@
+Linux Server Hardening
+
+1.Set  Grub  password  
+2.  Check  /tmp  permissions.  /tmp  should  be  chmod  1777  
+3.  Check  /tmp  ownership  /tmp  should  be  owned  by  root:root  
+4.Check  /usr/tmp  permissions.  /usr/tmp  should  be  chmod  1777  
+5.Check  /usr/tmp  ownership.  /usr/tmp  should  be  owned  by  root:root  
+6.Check  /usr/tmp  is  mounted  as  a  filesystem  or  is  a  symlink  to  /tmp.  /usr/tmp  should  either  be  symlinked  to  /tmp  or  
+7.  Check  server  runlevel.  only  run  the  server  at  runlevel  
+8.  Check  SSH  on  non-standard  port.  Edit  /etc/ssh/sshd_config
+9.  Check  SSH  PasswordAuthentication.
+10.  Enable  Kdump  
+11. ssh root  disable  
+12. Blacklist  unwanted  kernel  modules  
+13. Set  sudoers  
+14. Disable  CTRL  ALT  DEL  
+15. Delete  unwanted  users  and  group  
+    lp, sync, shutdown, halt, news, gopher,operator,games,mail,uucp,ftp  
+16.Check  unwanted  services  and  put  them  off.  
+some  are  below.
+chkconfig  avahi-daemon  off
+chkconfig  NetworkManager off
+chkconfig  NetworkManagerDispatcher  off
+chkconfig  anacron  off
+chkconfig  bluetooth  off
+chkconfig  cpuspeed  off
+chkconfig  cups  off 
+chkconfig  gpm  off
+chkconfig  hidd  off
+chkconfig  ip6tables off 
+chkconfig  iptables off 
+chkconfig  irda  off 
+chkconfig  mdmonitor off
+chkconfig  mdmpd  off
+chkconfig  pcscd  off 
+chkconfig  portmap  off 
+chkconfig  yum-updatesd off  
+chkconfig  smartd off
+chkconfig  firstboot  off
+	      
+17.  #REMOVE  IP6  SUPPORT:                
+echo  "alias  ipv6  off"  >> /etc/modprobe.conf               
+echo  "alias  net-pf-10  off"  >> /etc/modprobe.conf               
+sed  -i  's/NETWORKING_IPV6=yes/NETWORKING_IPV6=no/'  /etc/sysconfig/  network                
+service  network  restart                
+reboot  
+
+18.  #REMOVE  USELESS  RPMS  
+rpm  -e unix2dos-2.2-26.2.3.el5
+rpm  -e  mkbootdisk-1.5.3-2.1.x86_64
+rpm  -e dosfstools-2.11-7.el5
+rpm  -e dos2unix-3.1-27.2.el5
+rpm  -e finger-0.17-32.2.1.1
+rpm  -e firstboot-tui-1.4.27.7-1.el5.centos 
+
+19.  #UPDATE  ALL  SYSTEM  PACKAGES  and  INSTALL  YOUR  KERNEL  SOURCES
+yum  update
+yum  install  kernel*
+reboot  
+
+20.  #ADD  DATE  and  TIME  TO  HISTORY  OUTPUT
+echo  "export  HISTTIMEFORMAT=\"%h/%d  -  %H:%M:%S  \""  >>  /etc/bashrc  
+
+21.  #ALLOW  ROOT  LOGIN  ONLY  FROM  CONSOLE  OR  VMWARE  CONSOLE                
+echo  "tty1"  >  /etc/securetty                
+chmod  700  /root  
+
+22.  #DISALLOW  ROOT  SSH  LOGIN  (MUST  SU  TO  ROOT)
+echo  "PermitRootLogin  no"  >>  /etc/ssh/sshd_config  
