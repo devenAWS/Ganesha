@@ -1,6 +1,6 @@
 Ganesha
 Bappa
-
+Moraya
 
 ########################################################################
 		Linux Partitioning Steps by FDisk
