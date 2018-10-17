@@ -1,0 +1,44 @@
+---------------------------------------
+
+---------------------------------------
+mkdir central.git
+cd central.git/
+git init --bare
+
+cd ..
+git clone /c/Users/devendra.joshi/Desktop/DevOps/central.git /c/Users/devendra.joshi/Desktop/DevOps/workspace_01/
+
+cd workspace_01/
+touch 1.java
+git status
+git add .
+git status
+git commit -m "This is my first commit"
+git status
+
+vi 1.java
+git status
+git add .
+git status
+git commit -m "Bappa Moraya"
+git status
+
+
+---------------------------------------
+Check Git config setting
+---------------------------------------
+git config --list
+git config --global user.name "Devendra Joshi"
+git config --global user.email devendra.joshi9987@gmail.com
+git config push.default "simple"
+git config --list
+
+
+
+---------------------------------------
+Check Logs
+---------------------------------------
+git log
+git log --oneline
+git log --oneline --decorate
+git show 382aa9d
