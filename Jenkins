@@ -1,0 +1,18 @@
+
+---------------------------------------------------------------------
+Jenkins (based on Java)
+---------------------------------------------------------------------
+1: Global System Configuration
+	- Tools which we have gona use
+	- Environmental variable
+2: Node Configuration (slave machine for particular job)
+3: Plugin Configuration
+
+4: Job Configuration
+	- Task (what task we have to do, we can define)
+
+	1,2,3 are One time configuration but 4th is always change.
+
+
+To run the job, you have to tell the on which client you have to perform that task.
+Jenkins will connect  
