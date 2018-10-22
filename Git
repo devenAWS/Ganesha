@@ -42,3 +42,51 @@ git log
 git log --oneline
 git log --oneline --decorate
 git show 382aa9d
+
+
+
+
+---------------------------------------
+Git Stash (Backup/Restore)
+(To revert changes before commit)
+---------------------------------------
+vi 1.java
+git status
+git add .
+git stash
+
+git stash list (To list all stash/backup) 
+git stash  apply stash@{num} (to apply specific stash)
+git stash clear (to delete all stash id)
+
+
+---------------------------------------
+Git reset
+(To revertig changes before commit)
+---------------------------------------
+git reset (file)
+git reset --soft (Only header/ref get restore or move only header pointer)
+git reset --mixed (Move only header pointer & Reset the STAGING area, will not reset content of file)
+git reset --hard (Move only header pointer & Reset the STAGING area and Reset the WORKING DIR / NEW Commit with reset)
+
+
+---------------------------------------
+Git revert
+(To revertig changes AFTER COMMIT)
+---------------------------------------
+git revert (COMMIT) -- Revert a commit
+git checkout (COMMIT_IDC) -- Checkout specific commit
+
+
+
+
+---------------------------------------
+Git Tag
+(Gives)
+---------------------------------------
+git log --oneline (Check version)
+git tag -a "Version_1.0.0" -m "Assign Tag for this commit" 06e2c0c(Commit_ID)  (Apply tag to commit)
+git tag (Display list of Tags available)
+git show Version_1.0.0 (See content of Tags)
+git push --tags (Push tag)
+git tag -d (tags) (Delete Tag)
