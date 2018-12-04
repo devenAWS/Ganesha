@@ -1,6 +1,7 @@
 Ganesha
 Bappa
 Moraya
+Om Om
 
 ########################################################################
 		Linux Partitioning Steps by FDisk
